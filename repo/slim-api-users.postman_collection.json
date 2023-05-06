@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "11cb1eb1-aff1-463b-aa9e-5e45409bad29",
+		"name": "Slim API Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get User Id 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Varnava\", \n    \"last_name\": \"Friðrik\",\n    \"pesel\": \"51103179993\",\n    \"email\": \"deriyab314@soombo.com\", // temp mail\n    \"contact_emails\": [\"maty@onet.eu\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Varnava\", \n    \"last_name\": \"Friðrik\",\n    \"pesel\": \"51103179993\",\n    \"email\": \"hakiersman1337@soombo.com\", // temp mail\n    \"contact_emails\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Varnava\", \n    \"last_name\": \"Friðrik\",\n    \"pesel\": \"51103179993\",\n    \"email\": \"hakiersman1337@soombo.com\", // temp mail\n    \"contact_emails\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

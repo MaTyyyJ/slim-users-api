@@ -1,0 +1,56 @@
+version: "3"
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        ports:
+            - "80:80"
+        networks:
+            - internal
+        volumes:
+            - ./:/var/www/html/
+            - ./logs/nginx:/var/log/nginx/
+    php-cli:
+        build: ./docker/php-cli
+        container_name: php-cli
+        volumes:
+            - ./:/var/www/html/
+        working_dir: /var/www/html/
+        networks:
+            - internal
+        depends_on:
+            - php-fpm
+            - postgres
+    php-fpm:
+        build:
+            context: .
+            dockerfile: docker/php-fpm/Dockerfile
+        networks:
+            - internal
+        volumes:
+            - ./:/var/www/html/
+            - ./logs/php.log:/var/log/fpm-php.www.log
+        env_file:
+            - docker/php-fpm/.env
+    postgres:
+        image: postgres:15.2
+        ports:
+            - "5432:5432"
+        networks:
+            - internal
+        env_file:
+            - docker/postgres/.env
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:3.8-management
+        ports:
+            - 5672:5672
+            - 15672:15672
+        networks:
+            - internal
+        env_file:
+            - docker/rabbitmq/.env
+networks:
+    internal:
+        driver: bridge
